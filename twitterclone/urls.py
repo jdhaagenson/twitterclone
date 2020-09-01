@@ -19,18 +19,21 @@ from twitteruser.views import *
 from notification.views import *
 from tweet.views import *
 from authentication.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
-    path('/', main, name='main'),
+    path('', main, name='main'),
     path('login/', twitter_login, name='twitter_login'),
     path('logout/', twitter_logout, name='twitter_logout'),
     path('tweet/<int:tweet_id>/', tweet_detail, name='tweet_detail'),
-    path('user/<int:userid>', profile, name='profile'),
+    path('user/<int:userid>/', profile, name='profile'),
     path('notifications/', notifications, name='notifications'),
     path('tweet/', tweet_form, name='tweet_form'),
-    path('follow/', follow, name='follow'),
-    path('unfollow/', unfollow, name='unfollow'),
+    path('follow/<int:userid>/', follow, name='follow'),
+    path('unfollow/<int:userid>/', unfollow, name='unfollow'),
     path('register/', registration_form, name='register'),
     path('admin/', admin.site.urls),
 
-]
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

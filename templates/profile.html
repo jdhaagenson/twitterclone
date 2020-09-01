@@ -1,0 +1,12 @@
+{% extends "./index.html" %}
+{% block profile_section %}
+<div id="profile">
+    <img src="/static/profile.png" alt="profile picture">
+    <h1>{{ user.username }}</h1>
+    <p id="posts">{{ tweet_count }}</p>
+    <p>{{ follow_count }}</p>
+</div>
+<div id="tweets">
+    {{ tweets }}
+</div>
+{% endblock %}

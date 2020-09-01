@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block tweets_section %}
+    {% for tweet in tweets %}
+        <div class="tweet">
+            <a href="/user/{{ tweet.author.id }}/"><strong>{{ tweet.author }}</strong></a>
+            <a href="/tweet/{{ tweet.id }}/">{{ tweet.date }}</a>
+            <p class="tweet_text">{{ tweet.text }}</p>
+            <br>
+        </div>
+    {% endfor %}
+{% endblock %}

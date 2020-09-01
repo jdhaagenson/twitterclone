@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwitterClone</title>
+    <script>
+        const findTags = () => {
+            let tweets = document.getElementsByClassName('tweet_text');
+            for (let i=0; i<=tweets.length; i++) {
+                let text = tweets[i].value
+                let expression = /(@\w+)/gim;
+                let new_text = text.replace(expression, "<a href='/user/$1'>@$1</a>");
+                tweets[i].innerHTML = new_text
+            }
+            return tweets
+        }
+    </script>
+</head>
+<body>
+    <div id="header">
+        {% include "./partials/toolbar.html" %}
+    </div>
+    <div id="profile">{% block profile_section %}</div>{% endblock %}
+    <div id="tweets">{% block tweets_section %}</div>{% endblock %}
+</body>
+
+</html>

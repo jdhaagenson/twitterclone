@@ -3,7 +3,7 @@ from django import forms
 
 class RegistrationForm(forms.ModelForm):
     username = forms.CharField(max_length=50)
-    email = forms.EmailField()
+    email = forms.EmailField(required=False)
     password = forms.CharField(widget=forms.PasswordInput)
 
 

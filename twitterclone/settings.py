@@ -128,3 +128,7 @@ AUTH_USER_MODEL = 'twitteruser.TwitterUser'
 LOGIN_URL = '/login/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
