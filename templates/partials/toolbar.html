@@ -1,0 +1,19 @@
+<div id="toolbar">
+    <a href="/">Home</a>
+    {% if request.user %}
+        <a href="/logout/">Logout</a>
+    {% else %}
+        <a href="/register/">Sign Up</a>
+        <a href="/login/">Login</a>
+    {% endif %}
+
+</div>
+<div>
+    {% if notifications %}
+        <a href="/notifications/"><strong>Notifications ❣️</strong></a>
+    {% else %}
+        <a href="/notifications/">Notifications</a>
+    {% endif %}
+
+
+</div>

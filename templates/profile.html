@@ -5,6 +5,9 @@
     <h1>{{ user.username }}</h1>
     <p id="posts">{{ tweet_count }}</p>
     <p>{{ follow_count }}</p>
+    {% if user.username == request.user.username %}
+    {% if user not in request.user.following %}
+        <a href="/follow/{{ user.id }}"><button>Follow</button></a>
 </div>
 <div id="tweets">
     {{ tweets }}

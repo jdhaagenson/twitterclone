@@ -3,7 +3,7 @@ from tweet.models import Tweet
 from .models import TwitterUser
 from notification.models import Notification
 from tweet.views import tweet_detail, tweet_form
-from notification.views import notifications
+from notification.views import check_notifications, status_notification
 from authentication.views import twitter_login, twitter_logout, registration_form
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
@@ -13,11 +13,14 @@ from django.contrib.auth import get_user
 def profile(request, userid):
     user = get_user(request)
     profile_user = TwitterUser.objects.get(id=userid)
-    tweets = Tweet.objects.all().filter(author=profile_user)
+    tweets = Tweet.objects.all().filter(author=profile_user).order_by('date')
+    tweet_count = len(tweets)
+    follow_count = len(profile_user.following)
     return render(request, 'profile.html', {'user': profile_user,
                                             'tweets': tweets,
-                                            'tweet_count': len(tweets),
-                                            'follow_count': len(profile_user.following)})
+                                            'tweet_count': tweet_count,
+                                            'follow_count': follow_count,
+                                            'notifications': status_notification(request)})
 
 
 @login_required
