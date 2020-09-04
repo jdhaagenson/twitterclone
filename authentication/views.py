@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from .forms import RegistrationForm, LoginForm
 from twitteruser.models import TwitterUser
-from django.contrib.auth import login, logout, authenticate, get_user
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
 

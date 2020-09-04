@@ -12,6 +12,7 @@ def render_callback(response):
         note.save()
 
 
+@login_required
 def check_notifications(request):
     user = get_user(request)
     notes = Notification.objects.filter(user=user).order_by('-message__date')

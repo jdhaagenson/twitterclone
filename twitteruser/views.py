@@ -8,7 +8,6 @@ from django.contrib.auth import get_user
 
 # Create your views here.
 def profile(request, userid):
-    user = get_user(request)
     profile_user = TwitterUser.objects.get(id=userid)
     following = profile_user.following.all()
     tweets = Tweet.objects.all().filter(author=profile_user).order_by('-date')
@@ -39,11 +38,6 @@ def unfollow(request, userid):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-def get_username(request, userid):
-    user = TwitterUser.objects.get(id=userid)
-    return user.username
-
-
 @login_required
 def main(request):
     user = TwitterUser.objects.get(username=request.user)
@@ -59,6 +53,5 @@ def main(request):
                                           'tweet_count': tweet_count,
                                           'follow_count': follow_count,
                                           'following': following,
-                                          'notification_count': notification_count,
-                                          'get_username': get_username
+                                          'notification_count': notification_count
     })
