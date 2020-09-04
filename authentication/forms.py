@@ -1,7 +1,7 @@
 from django import forms
 
 
-class RegistrationForm(forms.ModelForm):
+class RegistrationForm(forms.Form):
     username = forms.CharField(max_length=50)
     email = forms.EmailField(required=False)
     password = forms.CharField(widget=forms.PasswordInput)

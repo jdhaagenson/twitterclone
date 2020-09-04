@@ -5,25 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TwitterClone</title>
-    <script>
-        const findTags = () => {
-            let tweets = document.getElementsByClassName('tweet_text');
-            for (let i=0; i<=tweets.length; i++) {
-                let text = tweets[i].value
-                let expression = /(@\w+)/gim;
-                let new_text = text.replace(expression, "<a href='/user/$1'>@$1</a>");
-                tweets[i].innerHTML = new_text
-            }
-            return tweets
-        }
-    </script>
+    <link rel="stylesheet" href="../static/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="header">
         {% include "./partials/toolbar.html" %}
     </div>
-    <div id="profile">{% block profile_section %}</div>{% endblock %}
-    <div id="tweets">{% block tweets_section %}</div>{% endblock %}
+    <div id="page">
+        <div id="profile">
+            <img src="/static/profile.png" alt="profile picture" width="160">
+            <h1>{{ user.username }}</h1>
+            <div class="statsholder">
+                <h5 class="stats">Tweets</h5>
+                <p class="stats" id="posts">{{ tweet_count }}</p>
+                <h5 class="stats">Following</h5>
+                <p id="follows" class="stats">{{ follow_count }}</p>
+            </div>
+        </div>
+        <div id="tweets">
+            <h1>Tweets</h1>
+            {% include './partials/tweet.html' %}
+        </div>
+    </div>
 </body>
 
 </html>

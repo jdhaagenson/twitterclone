@@ -5,8 +5,8 @@ from tweet.models import Tweet
 
 # Create your models here.
 class Notification(models.Model):
-    message = models.ForeignKey(Tweet)
-    user = models.ForeignKey(TwitterUser)
+    message = models.ForeignKey(Tweet, on_delete=models.CASCADE)
+    user = models.ForeignKey(TwitterUser, on_delete=models.CASCADE)
     viewed = models.BooleanField(default=False)
 
     def __str__(self):

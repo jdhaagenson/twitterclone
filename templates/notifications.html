@@ -1,0 +1,15 @@
+{% include './partials/toolbar.html' %}
+<div id="notifications">
+    {% if notification_count is not None %}
+        {% for note in notification_count %}
+        <div>
+        {{ notification_count.message }}
+        </div>
+        {% endfor %}
+    {% else %}
+        <div>
+            <h4>You have no new notifications.</h4>
+        </div>
+    {% endif %}
+</div>
+<!-- /#notifications -->

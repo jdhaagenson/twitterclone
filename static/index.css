@@ -1,0 +1,75 @@
+body {
+    background-color: #aac1ea;
+    display: grid;
+    grid-template-rows: 50px auto;
+    font-family: 'Krub', sans-serif;
+    place-items: stretch;
+}
+#header {
+    display: flex;
+    flex-direction: row;
+    background-color: #003366;
+    color: #caec16;
+    font-family: 'Krub', sans-serif;
+    padding:10px;
+}
+
+#profile {
+    display: grid;
+    grid-gap: 5px;
+    background-color: white;
+    width: 225px;
+    margin: 10px;
+    padding: 5px;
+    box-shadow: 1px 1px 5px black;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+#posts {
+    display: flex;
+
+}
+.statsholder {
+    display: grid;
+
+}
+#follows {
+    display: flex;
+}
+#tweets {
+    margin-left: 20px
+}
+#toolbar {
+    display: flex;
+    flex-direction: row;
+}
+#notification {
+    margin: 10px;
+    padding: 5px;
+}
+#newnotification {
+    margin: 10px;
+    padding: 5px;
+}
+a {
+    font-family: 'Krub', sans-serif;
+    color: #caec16;
+    text-decoration: none;
+    margin-right: 30px;
+}
+
+#page {
+    display: grid;
+    grid-template-columns: 250px auto;
+}
+.tweet {
+    background-color: white;
+    border: 1px solid #003366;
+    padding: 10px;
+    box-shadow: 1px 1px 5px black;
+    margin: 10px;
+}
+.tweetlink{
+    color: #003366;
+    text-decoration: #6DDCBD wavy;
+}

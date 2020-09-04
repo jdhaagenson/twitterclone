@@ -8,6 +8,9 @@ class Tweet(models.Model):
     date = models.DateTimeField(default=timezone.now)
     text = models.TextField(max_length=140)
 
+    def get_username(self):
+        return self.author.username
+
 
     def __str__(self):
-        return f'@{self.author}'
+        return self.author.username

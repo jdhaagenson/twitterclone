@@ -1,19 +1,21 @@
 <div id="toolbar">
-    <a href="/">Home</a>
-    {% if request.user %}
-        <a href="/logout/">Logout</a>
-    {% else %}
-        <a href="/register/">Sign Up</a>
-        <a href="/login/">Login</a>
-    {% endif %}
-
-</div>
-<div>
-    {% if notifications %}
-        <a href="/notifications/"><strong>Notifications ❣️</strong></a>
-    {% else %}
-        <a href="/notifications/">Notifications</a>
-    {% endif %}
-
-
+    <div id="auth">
+        <a href="/">Home</a>
+        {% if request.user %}
+            <a href="/logout/">Logout</a>
+        {% else %}
+            <a href="/register/">Sign Up</a>
+            <a href="/login/">Login</a>
+        {% endif %}
+    </div>
+    <div id="new">
+        <a href="/tweet/">New Tweet</a>
+    </div>
+    <div id="notifications">
+        {% if notification_count is not None %}
+            <a id="newnotification" href="/notifications/"><em style="color:hotpink;">Notifications ❣️{{ notification_count }}</em></a>
+        {% else %}
+            <a id="notification" href="/notifications/">Notifications</a>
+        {% endif %}
+    </div>
 </div>

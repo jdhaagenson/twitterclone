@@ -1,0 +1,11 @@
+<html>
+    <body>
+        {% include './partials/toolbar.html' %}
+        <div>
+        <a href="/user/{{ tweet.author_id }}/">{{ tweet.author }}</a>
+        <a href="/tweet/{{ tweet.id }}/">{{ tweet.date }}</a>
+        <p class="tweet_text">{{ tweet.text }}</p>
+        <br>
+        </div>
+    </body>
+</html>
