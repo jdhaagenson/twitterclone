@@ -21,6 +21,7 @@
                 <p class="stats" id="posts">{{ tweet_count }}</p>
                 <h5 class="stats">Following</h5>
                 <p id="follows" class="stats">{{ follow_count }}</p>
+                <a href="/user/{{ request.user.id }}/"><button>My Profile</button></a>
             </div>
         </div>
         <div id="tweets">

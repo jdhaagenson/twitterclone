@@ -1,7 +1,6 @@
 <div id="toolbar">
     <div id="auth">
         <a href="/">Home</a>
-        <a href="/user/{{ request.user.id }}/">My Profile</a>
         {% if request.user %}
             <a href="/logout/">Logout</a>
         {% else %}
