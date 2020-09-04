@@ -10,4 +10,4 @@ class Notification(models.Model):
     viewed = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.author
+        return self.message.text

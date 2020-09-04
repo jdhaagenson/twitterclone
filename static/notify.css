@@ -1,0 +1,42 @@
+body {
+    background-color: #aac1ea;
+    display: grid;
+    grid-template-rows: 50px auto;
+    font-family: 'Krub', sans-serif;
+    place-items: stretch;
+    /*grid-template-columns: 1fr;*/
+}
+#header {
+    display: flex;
+    flex-direction: row;
+    background-color: #003366;
+    color: #caec16;
+    font-family: 'Krub', sans-serif;
+    padding: 10px;
+}
+#notif {
+    background-color: white;
+    border: 1px solid #003366;
+    padding: 10px;
+    box-shadow: 10px;
+    margin: 10px;
+    color: #003366;
+
+}
+#toolbar {
+    display: flex;
+    flex-direction: row;
+}
+a {
+    font-family: 'Krub', sans-serif;
+    color: #caec16;
+    text-decoration: none;
+    margin-right: 30px;
+}
+#page {
+    display: block;
+}
+.tweetlink{
+    color: #003366;
+    text-decoration: #6DDCBD underline;
+}

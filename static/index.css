@@ -70,6 +70,22 @@ a {
     margin: 10px;
 }
 .tweetlink{
-    color: #003366;
-    text-decoration: #6DDCBD wavy;
+    color: #9ca503;
+    text-decoration: #9ca503 underline;
+}
+#follow {
+    background-color: green;
+    margin-bottom:10px;
+    color: white;
+    font-family: 'Krub', sans-serif;
+    padding:5px;
+    border-radius: 5%;
+}
+#unfollow {
+    background-color: red;
+    margin-bottom:10px;
+    color: white;
+    font-family: 'Krub', sans-serif;
+    padding:5px;
+    border-radius: 5%;
 }

@@ -1,10 +1,7 @@
-from django.shortcuts import render, reverse, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from tweet.models import Tweet
 from .models import TwitterUser
-from notification.models import Notification
-from tweet.views import tweet_detail, tweet_form
-from notification.views import check_notifications, status_notification, get_notifications
-from authentication.views import twitter_login, twitter_logout, registration_form
+from notification.views import get_notifications
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
 
@@ -36,7 +33,7 @@ def follow(request, userid):
 @login_required
 def unfollow(request, userid):
     to_unfollow = TwitterUser.objects.get(id=userid)
-    user = TwitterUser.objects.get(request.user)
+    user = get_user(request)
     user.following.remove(to_unfollow)
     user.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -56,7 +53,7 @@ def main(request):
     tweets = tweets.union(my_tweets).order_by('-date')
     tweet_count = Tweet.objects.filter(author=user).count()
     follow_count = user.following.all().count()
-    notification_count = get_notifications(request)['count']
+    notification_count = get_notifications(request)
     return render(request, 'index.html', {'user': user,
                                           'tweets': tweets,
                                           'tweet_count': tweet_count,

@@ -1,15 +1,31 @@
-{% include './partials/toolbar.html' %}
-<div id="notifications">
-    {% if notification_count is not None %}
-        {% for note in notification_count %}
-        <div>
-        {{ notification_count.message }}
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../static/notify.css">
+    </head>
+    <body>
+        <div id="header">
+            {% include './partials/toolbar.html' %}
         </div>
-        {% endfor %}
-    {% else %}
-        <div>
-            <h4>You have no new notifications.</h4>
+        <div id="page">
+            <h1>Notifications</h1>
+{#            {% if notifications.viewed is False %}#}
+                {% for note in notifications %}
+                    {% if note.viewed is False %}
+                        <div id="notif">
+                            <a class="tweetlink" href="/user/{{ note.message.author_id }}/">{{ note.message.author.username }}</a>
+                            <a class="tweetlink" href="/tweet/{{ note.message.id }}/">{{ note.message.date }}</a>
+                            <p>{{ note.message.text }}</p>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+{#            {% else %}#}
+                <div>
+                    <h4>You have no more notifications.</h4>
+                </div>
+{#            {% endif %}#}
         </div>
-    {% endif %}
-</div>
-<!-- /#notifications -->
+    <!-- /#notifications -->
+    </body>
+</html>

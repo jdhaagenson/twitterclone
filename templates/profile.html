@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/static/index.css">
     </head>
     <body>
@@ -16,8 +17,16 @@
                 <p class="stats" id="posts">{{ tweet_count }}</p>
                 <h5 class="stats">Following</h5>
                 <p id="follows" class="stats">{{ follow_count }}</p>
-                <a style='display: flex; flex-direction: column;' href="/follow/{{ user.id }}/"><button>Follow</button></a>
-                <a style='display: flex; flex-direction:column;' href="/unfollow/{{ user.id }}/"><button>Unfollow</button></a>
+                <a style='display: flex; flex-direction: column;' href="/follow/{{ user.id }}/">
+                    <button id="follow">
+                        Follow
+                    </button>
+                </a>
+                <a style='display: flex; flex-direction:column;' href="/unfollow/{{ user.id }}/">
+                    <button id="unfollow">
+                        Unfollow
+                    </button>
+                </a>
 
             </div>
         </div>
