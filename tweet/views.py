@@ -8,7 +8,7 @@ from django.shortcuts import HttpResponseRedirect, reverse
 import re
 from django.contrib.auth import get_user
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView, CreateView, DetailView
+from django.views.generic import TemplateView, FormView, DetailView
 
 
 # Create your views here.
@@ -63,7 +63,7 @@ class TweetDetailView(DetailView):
 #     return render(request, 'form.html', {'form': form})
 
 
-class TweetFormView(LoginRequiredMixin, TemplateView):
+class TweetFormView(LoginRequiredMixin, FormView):
     # @staticmethod
     def get_tags(self, text):
         tags = []
