@@ -1,11 +1,26 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="'UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tweet Detail</title>
+        <link href="https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/index.css">
+    </head>
     <body>
-        {% include './partials/toolbar.html' %}
-        <div>
-        <a href="/user/{{ tweet.author_id }}/">{{ tweet.author }}</a>
-        <a href="/tweet/{{ tweet.id }}/">{{ tweet.date }}</a>
-        <p class="tweet_text">{{ tweet.text }}</p>
-        <br>
+        <div id="header">
+            {% include './partials/toolbar.html' %}
         </div>
+        <h2>Tweet Details</h2>
+        <div class="tweet">
+            <p style="font-style: italic; font-family: monospace;">Written by:</p>
+            <a class="tweetlink" href="/user/{{ tweet.author_id }}/">{{ tweet.author }}</a>
+            <p style="font-style: italic; font-family: monospace;">Posted on:</p>
+            <a class="tweetlink" href="/tweet/{{ tweet.id }}/">{{ tweet.date }}</a>
+            <p style="font-style: italic; font-family: monospace;">Message:</p>
+            <p class="tweet_text" id="text">{{ tweet.text }}</p>
+            <br>
+        </div>
+{#    <script src="/static/findTags.js"></script>#}
     </body>
 </html>
