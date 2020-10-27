@@ -23,16 +23,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', main, name='main'),
+    path('', MainView.as_view(), name='main'),
     path('login/', twitter_login, name='twitter_login'),
     path('logout/', twitter_logout, name='twitter_logout'),
-    path('tweet/<int:tweet_id>/', tweet_detail, name='tweet_detail'),
+    path('tweet/<int:tweet_id>/', TweetDetailView.as_view(), name='tweet_detail'),
     path('user/<int:userid>/', profile, name='profile'),
     path('notifications/', check_notifications, name='notifications'),
-    path('tweet/', tweet_form, name='tweet_form'),
+    path('tweet/', TweetFormView.as_view(), name='tweet_form'),
     path('follow/<int:userid>/', follow, name='follow'),
     path('unfollow/<int:userid>/', unfollow, name='unfollow'),
-    path('register/', registration_form, name='register'),
+    path('register/', RegisterTwitterUser.as_view(), name='register'),
     path('admin/', admin.site.urls),
 
 

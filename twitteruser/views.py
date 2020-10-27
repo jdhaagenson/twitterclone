@@ -4,6 +4,8 @@ from .models import TwitterUser
 from notification.views import get_notifications
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -38,20 +40,39 @@ def unfollow(request, userid):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
-@login_required
-def main(request):
-    user = TwitterUser.objects.get(username=request.user)
-    following = user.following.all()
-    tweets = Tweet.objects.filter(author__in=following)
-    my_tweets = Tweet.objects.filter(author=user).values()
-    tweets = tweets.union(my_tweets).order_by('-date')
-    tweet_count = Tweet.objects.filter(author=user).count()
-    follow_count = user.following.all().count()
-    notification_count = get_notifications(request)
-    return render(request, 'index.html', {'user': user,
-                                          'tweets': tweets,
-                                          'tweet_count': tweet_count,
-                                          'follow_count': follow_count,
-                                          'following': following,
-                                          'notification_count': notification_count
-    })
+# @login_required
+# def main(request):
+#     user = TwitterUser.objects.get(username=request.user)
+#     following = user.following.all()
+#     tweets = Tweet.objects.filter(author__in=following)
+#     my_tweets = Tweet.objects.filter(author=user).values()
+#     tweets = tweets.union(my_tweets).order_by('-date')
+#     tweet_count = Tweet.objects.filter(author=user).count()
+#     follow_count = user.following.all().count()
+#     notification_count = get_notifications(request)
+#     return render(request, 'index.html', {'user': user,
+#                                           'tweets': tweets,
+#                                           'tweet_count': tweet_count,
+#                                           'follow_count': follow_count,
+#                                           'following': following,
+#                                           'notification_count': notification_count
+#     })
+
+
+class MainView(LoginRequiredMixin, TemplateView):
+    def get(self, request):
+        user = TwitterUser.objects.get(username=request.user)
+        following = user.following.all()
+        tweets = Tweet.objects.filter(author__in=following)
+        my_tweets = Tweet.objects.filter(author=user).values()
+        tweets = tweets.union(my_tweets).order_by('-date')
+        tweet_count = Tweet.objects.filter(author=user).count()
+        follow_count = user.following.all().count()
+        notification_count = get_notifications(request)
+        return render(request, 'index.html', {'user': user,
+                                              'tweets': tweets,
+                                              'tweet_count': tweet_count,
+                                              'follow_count': follow_count,
+                                              'following': following,
+                                              'notification_count': notification_count
+        })

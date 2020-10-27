@@ -13,10 +13,11 @@
 const findTags = () => {
     let text = document.getElementById('text').value;
     let expression = /(@\w+)/gim;
-    let text1 = text.replace(expression, "<a href='user/$1'>$1</a>");
-    document.getElementById('tweet').innerHTML=text1
+    let text1 = text.replace(expression, "<a href='/user/$1/'>$1</a>");
+    return document.getElementById('tweet').innerHTML=text1
 }
 
+findTags()
 //   </script>
 // </head>
 //
